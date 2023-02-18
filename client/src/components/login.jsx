@@ -35,7 +35,7 @@ const LoginButton = styled(Button)({
     }
 })
 const Text = styled(Typography)({
-    // fontSize: 14,
+    fontSize: 14,
     color: 'grey',
     opacity: 0.5,
 })
