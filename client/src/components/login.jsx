@@ -39,10 +39,20 @@ const Text = styled(Typography)({
     color: 'grey',
     opacity: 0.5,
 })
+const signupInitialValues = {
+    username: '',
+    email: '',
+    password: '',
+}
 
 function Login() {
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
     const [accountState, setAccountState] = useState(true);
+    const [signUp, setSignUp] = useState(signupInitialValues);
+    const onInputChange = (e) => {
+        setSignUp({ ...signUp, [e.target.name]: e.target.value });
+    }
+
     return (
         <div>
             <div>
@@ -57,9 +67,9 @@ function Login() {
                                 <Text>OR</Text>
                                 <Button onClick={() => setAccountState(!accountState)} >Create an Account</Button>
                             </Wrapper> : <Wrapper>
-                                <TextField id="standard-basic" label="Username" variant="standard" />
-                                <TextField id="standard-basic" label="Email" variant="standard" />
-                                <TextField id="standard-basic" label="Password" variant="standard" />
+                                <TextField id="standard-basic" label="Username" variant="standard" onChange={(e) => onInputChange(e)} name="username" />
+                                <TextField id="standard-basic" label="Email" variant="standard" onChange={(e) => onInputChange(e)} name="email" />
+                                <TextField id="standard-basic" label="Password" variant="standard" onChange={(e) => onInputChange(e)} name="password" />
                                 <LoginButton variant="contained">Create Account</LoginButton>
                                 <Text>OR</Text>
                                 <Button onClick={() => setAccountState(!accountState)}>Sign In</Button>
