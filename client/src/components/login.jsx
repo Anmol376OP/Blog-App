@@ -92,13 +92,15 @@ function Login() {
     const loginUser = async () => {
         let response = {}
         try {
-            response = await API.userLogin(signUp);
+            response = await API.userLogin(login);
         }
         catch (e) {
             console.log(e)
         }
         if (response.isSuccess) {
             setError('');
+            sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
+            sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
         }
         else {
             setError('Something went wrong! Please try again later')
